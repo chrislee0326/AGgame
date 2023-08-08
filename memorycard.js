@@ -1,4 +1,4 @@
-let cardCount = 20, row = 5, column = Math.floor(cardCount/5), pair = -1, pairindex = -1//카드 개수, 행수, 맞는 짝 카운트용 변수
+let cardCount = 12, row = 3, column = Math.floor(cardCount/3), pair = -1, pairindex = -1//카드 개수, 행수, 맞는 짝 카운트용 변수
 let arrDeck = []//카드 배열
 
 document.addEventListener('DOMContentLoaded',()=>{
