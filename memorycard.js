@@ -14,12 +14,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
     //클릭 이벤트 핸들러
+    let x=1
     document.querySelector('.placeholder').addEventListener('click',(e)=>{
-        if(e.target.classList.contains('card') && e.target.classList.contains('back')){
+        
+        if(e.target.classList.contains('card') && e.target.classList.contains('back')&&(x<3)){
             console.log('clicked');
             e.target.classList.remove('back')
             e.target.classList.add('front')
+            x=x+1
+        }else if(e.target.classList.contains('card') && e.target.classList.contains('back')&&(x=>3)){
+            alert("do not flip the card when another card is filpped")
         }
+
     })
     //애니메이션 완료 핸들러 - 애니메이션 종료 후 매칭 판단
     document.querySelector('.placeholder').addEventListener('transitionend',(e)=>{
@@ -30,9 +36,12 @@ document.addEventListener('DOMContentLoaded',()=>{
                     pair = e.target.dataset.number
                     pairindex = e.target.dataset.index
                 }else{
-                    if(pair == e.target.dataset.number && pairindex != e.target.dataset.index){
+                    if(pair == e.target.dataset.number && pairindex != e.target.dataset.index&&(x=3)){
                         //매치됨 - 컬러링
+                        
+                        
                         document.querySelectorAll('.placeholder .card.front').forEach((card)=>{card.classList.add('matched');})
+                        x=1
                         pair = -1
                         pairindex = -1
                         if(document.querySelector('.placeholder .card:not(.matched)') == null){
@@ -45,7 +54,11 @@ document.addEventListener('DOMContentLoaded',()=>{
                         document.querySelectorAll('.placeholder .card.front:not(.matched)').forEach((card)=>{card.classList.remove('front');card.classList.add('back');})
                         pair = -1
                         pairindex = -1
+                        x=1
+                    }else{
+                        alert("do not flip the card when another card is filpped")
                     }
+                    
                 }
             }            
         }
