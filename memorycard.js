@@ -60,7 +60,7 @@ function initCard(){
     //카드에 셔플 숫자 지정
     for(let i = 0;i < cardCount;i++){
         document.querySelectorAll('.placeholder .card').forEach((card,idx)=>{
-            card.dataset.number = '🧡'+arrDeck[idx]
+            card.dataset.number = '🧡    '+arrDeck[idx]
             card.dataset.index = idx
         })
     }
